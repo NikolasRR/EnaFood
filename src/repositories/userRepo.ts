@@ -7,8 +7,17 @@ async function create(user: UserBody) {
   })
 }
 
+async function get(email: string) {
+  return await prisma.user.findUnique({
+    where: {
+      email: email
+    }
+  })
+}
+
 const UserRepo = {
-  create
+  create,
+  get
 }
 
 export default UserRepo;
