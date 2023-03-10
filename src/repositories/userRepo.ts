@@ -8,7 +8,7 @@ async function create(user: UserBody) {
 }
 
 async function get(email: string) {
-  return await prisma.user.findUnique({
+  return await prisma.user.findFirst({
     where: {
       email: email
     }
