@@ -1,14 +1,15 @@
 import { Router } from "express";
 
 import controllers from "../controllers/cartControllers.js";
+import middleware from "../middlewares/cartMiddlewares.js";
 import validateToken from "../middlewares/tokenValidator.js";
 
 const cartRouter = Router();
 cartRouter
   .use(validateToken)
-  .post('/cart', controllers.addToCart)
-  .delete('/cart', controllers.deleteFromCart)
-  .put('/cart', controllers.updateAmount)
+  .post('/cart', middleware.validateForAdditionAndUpdate, controllers.addToCart)
+  .delete('/cart', middleware.validateForDeletion, controllers.deleteFromCart)
+  .put('/cart', middleware.validateForAdditionAndUpdate, controllers.updateAmount)
   .get('/cart', controllers.getCartProducts)
   .delete('/cart/all', controllers.clearCartProducts);
 
