@@ -1,13 +1,14 @@
+import jwt from "jsonwebtoken";
+
 import userRepo from "../repositories/userRepo.js";
 import { UserBody } from "../types/userTypes.js";
-import jwt from "jsonwebtoken";
 
 async function createOne(user: UserBody) {
   await userRepo.create(user);
 }
 
 async function logIn(email: string) {
-  const user = await userRepo.get(email);
+  const user = await userRepo.getByEmail(email);
   return generateToken(user.id);
 }
 
