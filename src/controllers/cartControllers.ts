@@ -21,9 +21,28 @@ async function deleteFromCart(req: Request, res: Response) {
   res.sendStatus(200);
 }
 
+async function updateAmount(req: Request, res: Response) {
+  const userId = res.locals.userId as string;
+  const product = req.body as ProductOnCart;
+
+  await cartService.updateAmount(userId, product);
+
+  res.sendStatus(200);
+}
+
+async function getCartProducts(req: Request, res: Response) {
+  const userId = res.locals.userId as string;
+  
+  const products = await cartService.getCart(userId);
+
+  res.send(products);
+}
+
 const controllers = {
   addToCart,
-  deleteFromCart
+  deleteFromCart,
+  updateAmount,
+  getCartProducts
 }
 
 export default controllers;
