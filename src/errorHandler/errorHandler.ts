@@ -15,6 +15,10 @@ export default async function errorHandler(error: error, req: Request, res: Resp
     case "not found":
       code = 404;
       break;
+    case "conflict":
+      code = 409;
+      error.message = "email already registered"
+      break;
     case "token":
       code = 422;
       error.message = "token missing, expired or unvalid";
