@@ -3,7 +3,13 @@ import { ProductOnCart } from "@prisma/client";
 import cartRepo from "../repositories/cartRepo.js";
 import productRepo from "../repositories/productRepo.js";
 
+async function checkProductExistence(productId: string) {
+  const product = await productRepo.getOneById(productId);
+  if (product === null) throw { type: "not found", message: "product does not exist" };
+}
+
 async function addNewProduct(userId: string, newProduct: ProductOnCart) {
+  await checkProductExistence(newProduct.productId);
   const currentCart = await cartRepo.getByUserId(userId);
 
   const productAlreadyOnCart = currentCart.products.find(product => product.productId === newProduct.productId);
@@ -18,7 +24,7 @@ async function addNewProduct(userId: string, newProduct: ProductOnCart) {
 
 async function deleteProduct(userId: string, productId: string) {
   const currentCart = await cartRepo.getByUserId(userId);
-  
+
   const newCart = currentCart.products.filter(product => product.productId !== productId);
   await cartRepo.updateByUserId(userId, newCart);
 }
@@ -45,6 +51,7 @@ async function getCart(userId: string) {
 }
 
 async function updateAmount(userId: string, updatedProduct: ProductOnCart) {
+  await checkProductExistence(updatedProduct.productId);
   let currentCart = await cartRepo.getByUserId(userId);
 
   const indexOfProduct = currentCart.products.findIndex(product => product.productId === updatedProduct.productId);

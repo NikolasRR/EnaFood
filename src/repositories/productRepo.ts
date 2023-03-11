@@ -12,9 +12,18 @@ async function getManyByIds(productsIds: string[]) {
   });
 }
 
+async function getOneById(id: string) {
+  return await prisma.product.findUnique({
+    where: {
+      id: id
+    }
+  })
+}
+
 const productRepo = {
   get,
-  getManyByIds
+  getManyByIds,
+  getOneById
 }
 
 export default productRepo;
