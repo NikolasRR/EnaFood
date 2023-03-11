@@ -38,11 +38,20 @@ async function getCartProducts(req: Request, res: Response) {
   res.send(products);
 }
 
+async function clearCartProducts(req: Request, res: Response) {
+  const userId = res.locals.userId as string;
+
+  await cartService.clearCart(userId);
+
+  res.sendStatus(200);
+}
+
 const controllers = {
   addToCart,
   deleteFromCart,
   updateAmount,
-  getCartProducts
+  getCartProducts,
+  clearCartProducts
 }
 
 export default controllers;

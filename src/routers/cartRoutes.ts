@@ -9,6 +9,7 @@ cartRouter
   .post('/cart', controllers.addToCart)
   .delete('/cart', controllers.deleteFromCart)
   .put('/cart', controllers.updateAmount)
-  .get('/cart', controllers.getCartProducts);
+  .get('/cart', controllers.getCartProducts)
+  .delete('/cart/all', controllers.clearCartProducts);
 
 export default cartRouter;
