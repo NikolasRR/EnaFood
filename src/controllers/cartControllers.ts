@@ -12,8 +12,18 @@ async function addToCart(req: Request, res: Response) {
   res.sendStatus(200);
 }
 
+async function deleteFromCart(req: Request, res: Response) {
+  const userId = res.locals.userId as string;
+  const productId = req.body.productId as string;
+
+  await cartService.deleteProduct(userId, productId);
+
+  res.sendStatus(200);
+}
+
 const controllers = {
-  addToCart
+  addToCart,
+  deleteFromCart
 }
 
 export default controllers;

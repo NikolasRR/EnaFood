@@ -15,8 +15,11 @@ async function addNewProduct(userId: string, newProduct: ProductOnCart) {
   await cartRepo.updateByUserId(userId, newCart);
 }
 
-async function deleteProduct() {
+async function deleteProduct(userId: string, productId: string) {
+  const currentCart = await cartRepo.getByUserId(userId);
   
+  const newCart = currentCart.products.filter(product => product.productId !== productId);
+  await cartRepo.updateByUserId(userId, newCart);
 }
 
 async function clear() {

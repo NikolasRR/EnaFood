@@ -6,6 +6,7 @@ import validateToken from "../middlewares/tokenValidator.js";
 const cartRouter = Router();
 cartRouter
   .use(validateToken)
-  .post('/cart/add', controllers.addToCart);
+  .post('/cart', controllers.addToCart)
+  .delete('/cart', controllers.deleteFromCart);
 
 export default cartRouter;
