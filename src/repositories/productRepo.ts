@@ -1,7 +1,13 @@
 import prisma from "../database/db.js";
 
-async function get() {
-  return await prisma.product.findMany();
+async function getByPage(page: number) {
+  return await prisma.product.findMany({
+    take: 10,
+    skip: page*10,
+    orderBy: {
+      id: 'desc'
+    }
+  });
 }
 
 async function getManyByIds(productsIds: string[]) {
@@ -21,7 +27,7 @@ async function getOneById(id: string) {
 }
 
 const productRepo = {
-  get,
+  getByPage,
   getManyByIds,
   getOneById
 }

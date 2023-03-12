@@ -23,6 +23,10 @@ export default async function errorHandler(error: error, req: Request, res: Resp
       code = 422;
       error.message = "token missing, expired or unvalid";
       break;
+    case "database":
+      code = 500;
+      error.message = "something went wrong when creating your account";
+      break;
     default:
       code = 500;
       break;

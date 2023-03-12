@@ -3,7 +3,8 @@ import { Request, Response } from "express";
 import productService from "../services/productServices.js";
 
 async function getProducts(req: Request, res: Response) {
-  const products = await productService.getAll();
+  const page = req.query.page as string;
+  const products = await productService.getByPage(page);
 
   res.send(products);
 }

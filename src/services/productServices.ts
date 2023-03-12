@@ -1,11 +1,11 @@
 import productRepo from "../repositories/productRepo.js";
 
-async function getAll() {
-  return await productRepo.get();
+async function getByPage(page: string) {
+  return await productRepo.getByPage(parseInt(page) - 1);
 }
 
 const productService = {
-  getAll
+  getByPage
 }
 
 export default productService;
