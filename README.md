@@ -34,3 +34,31 @@
     - rodar `npx prisma generate` no terminal.
     - rodar `npm run dev` no terminal para subir a API no modo de desenvolvimento. Ou rodar `npm run build` e depois `npm run start` para subir a API no modo de desenvolvimento.
     - O comando `npx prisma db seed` pode ser rodado após o prisma generate para seedar o banco de dados com 50 produtos aleatórios.
+
+## Rotas
+  - Rota Autenticada: rota que necessita do token informado ao logar na header Authorization.
+  - POST /sign-up
+   - Body JSON, contendo apenas email(string, válido) e nome(string)
+  - POST /sign-in
+    - Body JSON, contendo apenas o email registrado
+    - retorna um token para ser usado nas demais rotas
+  - GET /products 
+    - Rota Autenticada
+    - exige uma query "page" com um número inteiro, a primeira página é page=1
+  - POST /cart
+    - Rota Autenticada
+    - Body JSON, contendo apenas productId(string) e amount(number, int) do produto a ser adicionado
+    - Se um produto que já está na sacola for informado, sua quantidade será atualizada pela nova informada
+  - PUT /cart
+    - Rota Autenticada
+    - Body JSON, contendo apenas productId(string) e amount(number, int) do produto a ser atualizado
+    - Se um produto que não está na sacola for informado, ele será adicionado
+  - GET /cart
+    - Rota Autenticada
+    - Retorna uma lista com os produtos presentes na sacola
+  - DELETE /cart
+    - Rota Autenticada
+    - Body JSON, contendo apenas o productId(string) a ser removido da sacola
+  - DELETE /cart/all
+    - Rota Autenticada
+    - Remove todos os produtos na sacola do usuário
