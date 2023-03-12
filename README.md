@@ -28,7 +28,7 @@
     - criar um arquivo .env com as seguintes variavéis:
       - PORT = porta onde a API vai estar escutando
       - JWT_SECRET = string para assinar/validar os tokens
-      - DATABASE_URL = url para acessar o banco de dados, deve seguir o seguinte formato: `mongodb://USERNAME:PASSWORD@HOST{:PORT_NUMBER(OPTIONAL)}/DATABASE`. 
+      - DATABASE_URL = url para acessar o banco de dados, deve seguir o seguinte formato: `mongodb://USERNAME:PASSWORD@HOST{:PORT_NUMBER(OPTIONAL)}/DATABASE(?arguments, optional)`. 
       - Um banco de dados pode ser criado no MongoAtlas de graça, selecionando a opção "Connect" e depois "Connect your application" será gerado um link onde será apenas necessário adicionar o nome do banco de dados (`DATABASE`) antes da interrogação. Feito isso o link estará pronto para ser usado como `DATABSE_URL`.
     - rodar `npm i` no terminal.
     - rodar `npx prisma generate` no terminal.
