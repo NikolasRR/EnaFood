@@ -38,7 +38,7 @@
 ## Rotas
   - Rota Autenticada: rota que necessita do token informado ao logar na header Authorization.
   - POST /sign-up
-   - Body JSON, contendo apenas email(string, válido) e nome(string)
+    - Body JSON, contendo apenas email(string, válido) e nome(string)
   - POST /sign-in
     - Body JSON, contendo apenas o email registrado
     - retorna um token para ser usado nas demais rotas

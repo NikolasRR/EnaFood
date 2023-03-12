@@ -8,9 +8,9 @@ const cartRouter = Router();
 cartRouter
   .use(validateToken)
   .post('/cart', middleware.validateForAdditionAndUpdate, controllers.addToCart)
-  .delete('/cart', middleware.validateForDeletion, controllers.deleteFromCart)
   .put('/cart', middleware.validateForAdditionAndUpdate, controllers.updateAmount)
   .get('/cart', controllers.getCartProducts)
+  .delete('/cart', middleware.validateForDeletion, controllers.deleteFromCart)
   .delete('/cart/all', controllers.clearCartProducts);
 
 export default cartRouter;
