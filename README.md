@@ -2,7 +2,7 @@
 
 ## Justificativas
 - Uso do TypeScript:
-  - Inclui segurança de tipo no código, evitando diversos problemas realcionados que possam aparecer ao longo do processo de desenvolvimento.
+  - Inclui segurança de tipo no código, evitando diversos problemas relacionados que possam aparecer ao longo do processo de desenvolvimento.
 - Escolha do ExpressJS: 
   - É o framework que mais tenho familiaridade.
   - É unopinionated, o que me dá mais liberdade para decidir a arquitetura da aplicação
@@ -16,10 +16,10 @@
 - Escolha da Arquitetura em camadas:
   - Questões de organização e isolamento de atividades.
   - Os controllers lidam apenas com o request e a response.
-  - Os services aplicam as regras de negócio, são os únicos com acesso aos repositórios, retornam "a resposta pronta" para os controllers apenas enviarem.
+  - Os services lidam com a aplicação das regras de negócio, são os únicos com acesso aos repositórios
   - Os middlewares asseguram que as informações enviadas junto com o request estejam de acordo com o formado desejado, e valida a sessão do usuário.
   - Os repositories são os únicos a modificarem o banco de dados.
-  - Os routers roteiam os request para o devido controllador.
+  - Os routers roteiam um request para o devido controllador.
   - O ErrorHandler é uma camada pra tratar os erros que são jogados pelas demais camadas.
 
   ## Implementação
@@ -36,7 +36,7 @@
     - O comando `npx prisma db seed` pode ser rodado após o prisma generate para seedar o banco de dados com 50 produtos aleatórios.
 
 ## Rotas
-  - Rota Autenticada: rota que necessita do token informado ao logar na header Authorization.
+  - Rota Autenticada: rota que necessita do token informado no momento do login, na header Authorization.
   - POST /sign-up
     - Body JSON, contendo apenas email(string, válido) e nome(string)
   - POST /sign-in
