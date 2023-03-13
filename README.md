@@ -29,7 +29,7 @@
       - PORT = porta onde a API vai estar escutando
       - JWT_SECRET = string para assinar/validar os tokens
       - DATABASE_URL = url para acessar o banco de dados, deve seguir o seguinte formato: `mongodb://USERNAME:PASSWORD@HOST{:PORT_NUMBER(OPTIONAL)}/DATABASE(?arguments, optional)`. 
-      - Um banco de dados pode ser criado no MongoAtlas de graça, selecionando a opção "Connect" e depois "Connect your application" será gerado um link onde será necessário adicionar o nome do banco de dados (`DATABASE`) antes da interrogação, e colocar a senha no lugar de `<password>`. Feito isso o link estará pronto para ser usado como `DATABSE_URL`.
+      - Um banco de dados pode ser criado no MongoAtlas de graça. Após criação, clicando em "Connect" e depois "Connect your application" será gerado um link onde será necessário adicionar o nome do banco de dados (`DATABASE`) antes da interrogação, e colocar a senha no lugar de `<password>`. Feito isso o link estará pronto para ser usado como `DATABSE_URL`.
     - rodar `npm i` no terminal.
     - rodar `npx prisma generate` no terminal.
     - rodar `npm run dev` no terminal para subir a API no modo de desenvolvimento. Ou rodar `npm run build` e depois `npm run start` para subir a API no modo de desenvolvimento.
